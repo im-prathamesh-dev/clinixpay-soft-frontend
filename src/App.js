@@ -1,30 +1,21 @@
-import React, { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 
 function App() {
-  const [page, setPage] = useState("login"); // login | register
-
   return (
-    <div>
-      <div className="text-center mt-3">
-        <button
-          className="btn btn-link"
-          onClick={() => setPage("login")}
-        >
-          Login
-        </button>
+    <div className="container">
+      <Routes>
+        {/* Default route */}
+        <Route path="/" element={<Navigate to="/login" />} />
 
-        <button
-          className="btn btn-link"
-          onClick={() => setPage("register")}
-        >
-          Register
-        </button>
-      </div>
+        {/* Auth routes */}
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterForm />} />
 
-      {page === "login" && <LoginForm />}
-      {page === "register" && <RegisterForm />}
+        {/* Fallback */}
+        <Route path="*" element={<h3 className="text-center mt-5">Page Not Found</h3>} />
+      </Routes>
     </div>
   );
 }
