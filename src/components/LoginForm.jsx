@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Eye, EyeOff } from 'lucide-react';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -50,6 +51,8 @@ const LoginForm = () => {
     }
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-gray-50 dark:bg-gray-900">
       <div className="w-full max-w-md">
@@ -97,19 +100,32 @@ const LoginForm = () => {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Enter password"
-                required
-                className="w-full px-4 py-2.5 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-              />
-            </div>
+  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+    Password
+  </label>
+  <div className="relative">
+    <input
+      type={showPassword ? "text" : "password"}
+      name="password"
+      value={formData.password}
+      onChange={handleChange}
+      placeholder="Enter password"
+      required
+      className="w-full px-4 py-2.5 pr-11 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+    />
+    <button
+      type="button"
+      onClick={() => setShowPassword(!showPassword)}
+      className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-primary transition-colors focus:outline-none"
+    >
+      {showPassword ? (
+        <EyeOff size={20} />
+      ) : (
+        <Eye size={20} />
+      )}
+    </button>
+  </div>
+</div>
 
             {/* Button */}
             <button
