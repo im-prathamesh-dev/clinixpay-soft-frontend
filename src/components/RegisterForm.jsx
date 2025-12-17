@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff } from 'lucide-react';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: {
       firstName: "",
@@ -59,11 +62,28 @@ const RegisterForm = () => {
     setLoading(true);
 
     try {
-      console.log("Final Data:", formData);
-      // 🔗 API CALL HERE
+      // ❗ remove confirmPassword before sending
+      const payload = { ...formData };
+      delete payload.confirmPassword;
+  
+      console.log("Sending to backend:", payload);
+  
+      const res = await axios.post(
+        "http://localhost:5000/api/v1/auth/register",
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+  
+      alert(res.data.message);
+      navigate("/login");
+  
     } catch (error) {
       console.error(error);
-      alert("Registration failed");
+      alert(error.response?.data?.message || "Registration failed");
     } finally {
       setLoading(false);
     }

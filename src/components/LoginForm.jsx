@@ -29,7 +29,7 @@ const LoginForm = () => {
     setLoading(true);
 
     try {
-      const { data } = await axios.post("/auth/login", {
+      const { data } = await axios.post("http://localhost:5000/api/v1/auth/login", {
         email: formData.email,
         password: formData.password,
       });
