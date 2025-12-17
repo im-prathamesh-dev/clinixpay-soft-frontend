@@ -68,219 +68,251 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="container-fluid min-vh-100   px-2 d-flex align-items-center">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-12 col-xxl-10">
-            <div className="card  border-3 rounded-4">
-              <div className="card-body p-4 p-md-5">
-                <h3 className="text-center fw-bold mb-4 text-primary">
-                  ClinixPay Store Registration
-                </h3>
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gray-50 dark:bg-gray-900">
+      <div className="w-full max-w-5xl">
+        {/* Brand / Logo */}
+        <div className="mb-6 text-center">
+          <h1 className="text-2xl font-bold text-primary dark:text-primary-light tracking-tight">
+            ClinixPay
+          </h1>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            Create your store account to start billing
+          </p>
+        </div>
 
-                <form onSubmit={handleSubmit} className="row g-3">
-                  {/* Column 1: Personal Info */}
-                  <div className="col-12 col-md-4">
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">First Name *</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sm"
-                        name="fullName.firstName"
-                        value={formData.fullName.firstName}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+        <div className="bg-white dark:bg-gray-800 rounded-card shadow-soft hover:shadow-soft-lg transition-all duration-200 p-6 md:p-8">
+          <h2 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-gray-100 text-center mb-2">
+            Store Registration
+          </h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-6">
+            Enter your store and license details to get started
+          </p>
 
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">Middle Name</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sm"
-                        name="fullName.middleName"
-                        value={formData.fullName.middleName}
-                        onChange={handleChange}
-                      />
-                    </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              {/* Column 1: Personal Info */}
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    First Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="fullName.firstName"
+                    value={formData.fullName.firstName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
 
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">Last Name *</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sm"
-                        name="fullName.lastName"
-                        value={formData.fullName.lastName}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    Middle Name
+                  </label>
+                  <input
+                    type="text"
+                    name="fullName.middleName"
+                    value={formData.fullName.middleName}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
 
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">Email *</label>
-                      <input
-                        type="email"
-                        className="form-control form-control-sm"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    Last Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="fullName.lastName"
+                    value={formData.fullName.lastName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
 
-                  {/* Column 2: Contact & Store */}
-                  <div className="col-12 col-md-4">
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">Contact Number *</label>
-                      <input
-                        type="tel"
-                        className="form-control form-control-sm"
-                        name="contactNo"
-                        value={formData.contactNo}
-                        onChange={handleChange}
-                        placeholder="10 digit mobile"
-                        required
-                      />
-                    </div>
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+              </div>
 
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">Location *</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sm"
-                        name="location"
-                        value={formData.location}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+              {/* Column 2: Contact & Store */}
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    Contact Number *
+                  </label>
+                  <input
+                    type="tel"
+                    name="contactNo"
+                    value={formData.contactNo}
+                    onChange={handleChange}
+                    placeholder="10 digit mobile"
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
 
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">Store Name *</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sm"
-                        name="storeName"
-                        value={formData.storeName}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    Location *
+                  </label>
+                  <input
+                    type="text"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
 
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">GST Number *</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sm text-uppercase"
-                        name="gstNo"
-                        value={formData.gstNo}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    Store Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="storeName"
+                    value={formData.storeName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
 
-                  {/* Column 3: Security & License */}
-                  <div className="col-12 col-md-4">
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">Password *</label>
-                      <input
-                        type="password"
-                        className="form-control form-control-sm"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                      />
-                      <small className="text-muted">Min 6 characters</small>
-                    </div>
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    GST Number *
+                  </label>
+                  <input
+                    type="text"
+                    name="gstNo"
+                    value={formData.gstNo}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 uppercase focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+              </div>
 
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">Confirm Password *</label>
-                      <input
-                        type="password"
-                        className="form-control form-control-sm"
-                        name="confirmPassword"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+              {/* Column 3: Security & License */}
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    Password *
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                    Min 6 characters
+                  </p>
+                </div>
 
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">Store License No *</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sm"
-                        name="storeLicNo"
-                        value={formData.storeLicNo}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    Confirm Password *
+                  </label>
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
 
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-primary">ClinixPay License Key *</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sm"
-                        name="clinixPayLicKey"
-                        value={formData.clinixPayLicKey}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    Store License No *
+                  </label>
+                  <input
+                    type="text"
+                    name="storeLicNo"
+                    value={formData.storeLicNo}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
 
-                  {/* Terms and Submit - Full Width */}
-                  <div className="col-12">
-                    <div className="row align-items-center mt-2">
-                      <div className="col-md-8">
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id="termsCheck"
-                            required
-                          />
-                          <label className="form-check-label small" htmlFor="termsCheck">
-                            I agree to the Terms & Conditions and Privacy Policy of ClinixPay
-                          </label>
-                        </div>
-                      </div>
-                      <div className="col-md-4 mt-2 mt-md-0">
-                        <button
-                          type="submit"
-                          className="btn btn-primary w-100 py-2 fw-semibold"
-                          disabled={loading}
-                        >
-                          {loading ? (
-                            <>
-                              <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                              Registering...
-                            </>
-                          ) : (
-                            "Register Store"
-                          )}
-                        </button>
-                        <Link
-                          to="/login"
-                          className="btn btn-link text-decoration-none"
-                        >
-                          Already have an account? Login
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-
-                <p className="text-center text-muted mt-4 mb-0 small">
-                  © {new Date().getFullYear()} ClinixPay. All rights reserved.
-                </p>
+                <div>
+                  <label className="block text-xs font-semibold text-primary mb-1.5 uppercase tracking-wide">
+                    ClinixPay License Key *
+                  </label>
+                  <input
+                    type="text"
+                    name="clinixPayLicKey"
+                    value={formData.clinixPayLicKey}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 text-sm rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
               </div>
             </div>
-          </div>
+
+            {/* Terms and Submit */}
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-4 border-t border-gray-200 dark:border-gray-700 mt-2">
+              <label className="inline-flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <input
+                  type="checkbox"
+                  required
+                  className="mt-1 h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary"
+                />
+                <span>
+                  I agree to the{" "}
+                  <span className="font-medium text-primary hover:text-primary-dark cursor-pointer">
+                    Terms &amp; Conditions
+                  </span>{" "}
+                  and{" "}
+                  <span className="font-medium text-primary hover:text-primary-dark cursor-pointer">
+                    Privacy Policy
+                  </span>{" "}
+                  of ClinixPay.
+                </span>
+              </label>
+
+              <div className="flex flex-col md:items-end gap-2 w-full md:w-auto">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full md:w-auto inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 active:scale-95"
+                >
+                  {loading ? "Registering..." : "Register Store"}
+                </button>
+                <Link
+                  to="/login"
+                  className="text-sm font-medium text-primary hover:text-primary-dark hover:underline text-left md:text-right"
+                >
+                  Already have an account? Login
+                </Link>
+              </div>
+            </div>
+          </form>
+
+          <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-6">
+            © {new Date().getFullYear()} ClinixPay. All rights reserved.
+          </p>
         </div>
       </div>
     </div>

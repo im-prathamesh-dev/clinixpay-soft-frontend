@@ -51,82 +51,91 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="container-fluid min-vh-100 d-flex align-items-center  px-2">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4">
-            <div className="card  border-3 rounded-4">
-              <div className="card-body p-4 p-md-5">
-                <h3 className="text-center fw-bold mb-4 text-primary">
-                  ClinixPay Login
-                </h3>
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gray-50 dark:bg-gray-900">
+      <div className="w-full max-w-md">
+        {/* Brand / Logo */}
+        <div className="mb-6 text-center">
+          <h1 className="text-2xl font-bold text-primary dark:text-primary-light tracking-tight">
+            ClinixPay
+          </h1>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            Billing dashboard for modern medical stores
+          </p>
+        </div>
 
-                {/* ❌ Error Message */}
-                {error && (
-                  <div className="alert alert-danger py-2">
-                    {error}
-                  </div>
-                )}
+        <div className="bg-white dark:bg-gray-800 rounded-card shadow-soft hover:shadow-soft-lg transition-all duration-200 p-6 md:p-8">
+          <h2 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-gray-100 text-center mb-2">
+            Login
+          </h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-6">
+            Sign in to access your billing dashboard
+          </p>
 
-                <form onSubmit={handleSubmit}>
-                  {/* Email */}
-                  <div className="mb-3">
-                    <label className="form-label">Email *</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="you@example.com"
-                      required
-                    />
-                  </div>
+          {/* Error Message */}
+          {error && (
+            <div className="mb-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm px-3 py-2 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300">
+              {error}
+            </div>
+          )}
 
-                  {/* Password */}
-                  <div className="mb-4">
-                    <label className="form-label">Password *</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      placeholder="Enter password"
-                      required
-                    />
-                  </div>
-
-                  {/* Button */}
-                  <button
-                    type="submit"
-                    className="btn btn-primary w-100 py-2 fw-semibold"
-                    disabled={loading}
-                  >
-                    {loading ? "Logging in..." : "Login"}
-                  </button>
-                </form>
-
-                {/* Footer Links */}
-                <div className="text-center mt-3">
-                  <small className="text-muted">
-                    Don’t have an account?{" "}
-                    <Link
-                      to="/register"
-                      className="text-decoration-none"
-                    >
-                      Register
-                    </Link>
-                  </small>
-                </div>
-              </div>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Email */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="you@example.com"
+                required
+                className="w-full px-4 py-2.5 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+              />
             </div>
 
-            <p className="text-center text-muted mt-3 small">
-              © {new Date().getFullYear()} ClinixPay. All rights reserved.
-            </p>
+            {/* Password */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter password"
+                required
+                className="w-full px-4 py-2.5 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+              />
+            </div>
+
+            {/* Button */}
+            <button
+              type="submit"
+              className="w-full mt-2 inline-flex items-center justify-center px-4 py-3 text-sm font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 active:scale-95"
+              disabled={loading}
+            >
+              {loading ? "Logging in..." : "Login"}
+            </button>
+          </form>
+
+          {/* Footer Links */}
+          <div className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
+            Don’t have an account?{" "}
+            <Link
+              to="/register"
+              className="font-medium text-primary hover:text-primary-dark hover:underline transition-colors"
+            >
+              Register
+            </Link>
           </div>
         </div>
+
+        <p className="mt-4 text-center text-xs text-gray-400 dark:text-gray-500">
+          © {new Date().getFullYear()} ClinixPay. All rights reserved.
+        </p>
       </div>
     </div>
   );
