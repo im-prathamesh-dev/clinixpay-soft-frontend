@@ -1,5 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
+
+/* ================= USER APP ================= */
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 import Layout from "./components/layout/Layout";
@@ -9,25 +11,38 @@ import Inventory from "./pages/Inventory";
 import Customers from "./pages/Customers";
 import Reports from "./pages/Reports";
 import Finance from "./pages/Finance";
+import Profile from "./pages/Profile";
 
-// Protected Route Component
+/* ================= ADMIN APP ================= */
+import AdminLayout from "./Admin/layout/AdminLayout";
+import AdminLogin from "./Admin/pages/AdminLogin";
+import AdminDashboard from "./Admin/pages/Dashboard";
+import Licenses from "./Admin/pages/Licenses";
+import AdminCustomers from "./Admin/pages/Customers";
+import Notifications from "./Admin/pages/Notifications";
+import Support from "./Admin/pages/Support";
+
+/* ================= PROTECTED ROUTES ================= */
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem("token");
   return token ? children : <Navigate to="/login" />;
+};
+
+const AdminProtectedRoute = ({ children }) => {
+  const adminToken = localStorage.getItem("adminToken");
+  return adminToken ? children : <Navigate to="/admin/login" />;
 };
 
 function App() {
   return (
     <ThemeProvider>
       <Routes>
-        {/* Default route */}
+        {/* ================= USER ROUTES ================= */}
         <Route path="/" element={<Navigate to="/login" />} />
 
-        {/* Auth routes */}
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
 
-        {/* Protected Dashboard Routes */}
         <Route
           path="/dashboard"
           element={
@@ -38,6 +53,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/billing"
           element={
@@ -48,6 +64,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/inventory"
           element={
@@ -58,6 +75,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/customers"
           element={
@@ -68,6 +86,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/reports"
           element={
@@ -78,6 +97,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/finance"
           element={
@@ -89,8 +109,41 @@ function App() {
           }
         />
 
-        {/* Fallback */}
-        <Route path="*" element={<Navigate to="/dashboard" />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Profile />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ================= ADMIN ROUTES ================= */}
+
+        <Route path="/admin/login" element={<AdminLogin />} />
+
+        <Route
+          path="/admin"
+          element={
+            <AdminProtectedRoute>
+              <AdminLayout />
+            </AdminProtectedRoute>
+          }
+        >
+          {/* DEFAULT ADMIN DASHBOARD */}
+          <Route index element={<AdminDashboard />} />
+
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="licenses" element={<Licenses />} />
+          <Route path="customers" element={<AdminCustomers />} />
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="support" element={<Support />} />
+        </Route>
+
+        {/* ================= FALLBACK ================= */}
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </ThemeProvider>
   );

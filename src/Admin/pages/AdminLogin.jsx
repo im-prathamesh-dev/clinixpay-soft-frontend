@@ -24,32 +24,31 @@ const LoginForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+  e.preventDefault();
+  setError("");
+  setLoading(true);
 
-    try {
-      const { data } = await axios.post("http://localhost:5000/api/v1/auth/login", {
+  try {
+    const { data } = await axios.post(
+      "http://localhost:5000/api/v1/admin/login",
+      {
         email: formData.email,
         password: formData.password,
-      });
-
-      if (data.success) {
-        // ✅ Store auth data
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-
-        // 🚀 Redirect
-        navigate("/dashboard");
       }
-    } catch (err) {
-      setError(
-        err.response?.data?.message || "Invalid email or password"
-      );
-    } finally {
-      setLoading(false);
+    );
+
+    // ✅ ADMIN LOGIN SUCCESS
+    if (data.token) {
+      localStorage.setItem("adminToken", data.token);
+      navigate("/admin");
     }
-  };
+  } catch (err) {
+    setError(err.response?.data?.message || "Invalid email or password");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -68,10 +67,10 @@ const LoginForm = () => {
 
         <div className="bg-white dark:bg-gray-800 rounded-card shadow-soft hover:shadow-soft-lg transition-all duration-200 p-6 md:p-8">
           <h2 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-gray-100 text-center mb-2">
-            Login
+           Admin Login
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-6">
-            Sign in to access your billing dashboard
+            Sign in to access your Admin dashboard
           </p>
 
           {/* Error Message */}
@@ -138,7 +137,7 @@ const LoginForm = () => {
           </form>
 
           {/* Footer Links */}
-          <div className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
+          {/* <div className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
             Don’t have an account?{" "}
             <Link
               to="/register"
@@ -146,7 +145,7 @@ const LoginForm = () => {
             >
               Register
             </Link>
-          </div>
+          </div> */}
         </div>
 
         <p className="mt-4 text-center text-xs text-gray-400 dark:text-gray-500">
