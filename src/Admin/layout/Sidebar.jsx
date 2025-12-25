@@ -6,7 +6,7 @@ const menu = [
   { path: "/admin/customers", label: "Customers" },
   { path: "/admin/notifications", label: "Notifications" },
   { path: "/admin/support", label: "Support Tickets" },
-  { path: "/admin/team", label: "Team" }
+  // { path: "/admin/team", label: "Team" }
 ];
 
 const Sidebar = () => {
