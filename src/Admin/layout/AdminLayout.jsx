@@ -1,16 +1,17 @@
+// AdminLayout.jsx
 import Sidebar from "./Sidebar";
-import AdminHeader from "./AdminHeader";
+import BottomNav from "./BottomNav";
 
 const AdminLayout = ({ children }) => {
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex">
       <Sidebar />
-      <div className="flex-1 flex flex-col">
-        <AdminHeader />
-        <main className="flex-1 overflow-y-auto p-6">
-          {children}
-        </main>
-      </div>
+
+      <main className="flex-1 min-h-screen bg-gray-100 p-4 pb-20 md:pb-4">
+        {children}
+      </main>
+
+      <BottomNav />
     </div>
   );
 };

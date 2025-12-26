@@ -1,31 +1,38 @@
+// Sidebar.jsx
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
-const menu = [
-  { path: "/admin", label: "Dashboard" },
-  { path: "/admin/licenses", label: "Licenses & Revenue" },
-  { path: "/admin/customers", label: "Customers" },
-  { path: "/admin/notifications", label: "Notifications" },
-  { path: "/admin/support", label: "Support Tickets" },
-  // { path: "/admin/team", label: "Team" }
-];
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { menu } from "./menuConfig";
 
 const Sidebar = () => {
-  return (
-    <aside className="w-64 bg-gray-900 text-white p-4">
-      <h2 className="text-xl font-bold mb-6">ClinixPay Admin</h2>
+  const [collapsed, setCollapsed] = useState(false);
 
-      <nav className="space-y-2">
-        {menu.map((m) => (
+  return (
+    <aside
+      className={`hidden md:flex flex-col bg-gray-900 text-white h-screen transition-all duration-300
+      ${collapsed ? "w-20" : "w-64"}`}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between p-4">
+        {!collapsed && <h2 className="text-xl font-bold">ClinixPay</h2>}
+        <button onClick={() => setCollapsed(!collapsed)}>
+          {collapsed ? <ChevronRight /> : <ChevronLeft />}
+        </button>
+      </div>
+
+      {/* Menu */}
+      <nav className="flex-1 space-y-2 px-2">
+        {menu.map(({ path, label, icon: Icon }) => (
           <NavLink
-            key={m.path}
-            to={m.path}
+            key={path}
+            to={path}
             className={({ isActive }) =>
-              `block px-3 py-2 rounded ${
-                isActive ? "bg-primary" : "hover:bg-gray-700"
-              }`
+              `flex items-center gap-3 px-3 py-2 rounded-md transition
+              ${isActive ? "bg-primary text-white" : "hover:bg-gray-700"}`
             }
           >
-            {m.label}
+            <Icon size={20} />
+            {!collapsed && <span>{label}</span>}
           </NavLink>
         ))}
       </nav>

@@ -1,7 +1,8 @@
 const AdminHeader = () => {
   return (
     <header className="h-14 bg-white border-b flex items-center justify-between px-6">
-      <h1 className="font-semibold">Admin Dashboard</h1>
+      <h1 className="font-semibold text-black">Admin Dashboard</h1>
+   
 
       <button
         onClick={() => {
