@@ -7,7 +7,6 @@ import {
   Plus,
   Minus,
   Trash2,
-  Barcode,
   Receipt,
 } from 'lucide-react';
 
@@ -25,7 +24,7 @@ const Billing = () => {
     doctor: '',
   });
 
-  const [prescription, setPrescription] = useState(null);
+  
 
   const [showPayment, setShowPayment] = useState(false);
   const [paymentMode, setPaymentMode] = useState('CASH');
@@ -177,12 +176,6 @@ const Billing = () => {
           />
         </div>
 
-        <input
-          type="file"
-          accept="image/*,.pdf"
-          className="mt-3"
-          onChange={(e) => setPrescription(e.target.files[0])}
-        />
       </Card>
 
       {/* SEARCH */}
@@ -197,9 +190,7 @@ const Billing = () => {
               onChange={(e) => handleSearch(e.target.value)}
             />
           </div>
-          <Button variant="outline">
-            <Barcode />
-          </Button>
+         
         </div>
 
         {selectedProduct && (
@@ -269,7 +260,8 @@ const Billing = () => {
 
                 <input
                   type="number"
-                  className="w-16 border rounded px-1"
+                  className="w-16 border rounded px-1 py-0.5 text-center"
+                  placeholder="Disc %"
                   value={item.discount}
                   onChange={(e) =>
                     updateDiscount(item.id, e.target.value)
@@ -353,7 +345,6 @@ const Billing = () => {
                     billItems,
                     billSummary,
                     paymentMode,
-                    prescription,
                   });
                   alert('✅ Bill Generated');
                   setBillItems([]);

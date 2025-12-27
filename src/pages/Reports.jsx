@@ -73,7 +73,9 @@ const Reports = () => {
             View detailed sales reports and analytics
           </p>
         </div>
-        <Button variant="primary" size="lg" className="w-full sm:w-auto">
+        <Button  variant="primary"
+          size="lg"
+          className="flex items-center justify-center gap-2 whitespace-nowrap">
           <Download className="w-5 h-5 mr-2" />
           Export Report
         </Button>
@@ -106,7 +108,9 @@ const Reports = () => {
               />
             </div>
           </div>
-          <Button variant="primary" size="md">
+          <Button  variant="primary"
+          size="md"
+          className="flex items-center justify-center gap-2 whitespace-nowrap">
             <Calendar className="w-4 h-4 mr-2" />
             Apply Filter
           </Button>

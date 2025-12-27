@@ -165,10 +165,15 @@ const Customers = () => {
             Manage customers, view purchase history, and track loyalty points
           </p>
         </div>
-        <Button variant="primary" size="lg" className="w-full sm:w-auto">
-          <Plus className="w-5 h-5 mr-2" />
+        <Button
+          variant="primary"
+          size="lg"
+          className="flex items-center justify-center gap-2 whitespace-nowrap"
+        >
+          <Plus className="w-5 h-5" />
           Add Customer
         </Button>
+
       </div>
 
       {/* Stats Cards */}
